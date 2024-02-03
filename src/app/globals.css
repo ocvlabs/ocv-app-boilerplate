@@ -6,11 +6,13 @@
   --blue: #005b96;
   --dark-blue: #011f4b;
   --light-blue: #b3cde0;
+  --beige: #fffaf6;
+  --black: #15110e;
 }
 
 body {
-  color: #fff;
-  background: #000;
+  color: var(--black);
+  background: var(--beige);
   min-height: 100vh;
   display: flex;
   flex-direction: column;

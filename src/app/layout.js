@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <ContextManager>
           <div className="flex flex-col min-h-screen ">
             <Nav />
-            <main className="flex-1 px-4 md:px-8 dark text-foreground bg-background">{children}</main>
+            <main className="flex-1 px-4 md:px-8">{children}</main>
             <Footer />
           </div>
         </ContextManager>

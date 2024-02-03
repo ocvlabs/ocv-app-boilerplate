@@ -1,19 +1,57 @@
 "use client"
 
+import { Context } from "@/providers/ContextManager"
+import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react"
 import Image from "next/image"
+import { useContext } from "react"
 
 const Nav = () => {
+    const { connect, connecting, accountAddress } = useContext(Context);
     return (
-        <nav className="grid w-full grid-cols-2 px-4 border-b md:grid-cols-4 md:px-8 border-zinc-700">
-            <div className="text-[#b3cde0] col-span-1 p-4 text-xl font-semibold border-l md:px-8 border-zinc-700">
-                <Image src="/ocv.svg" alt="OCV Labs Logo" width={60} height={20} />
-                LABS
-                {/* name of ocv-product or application */}
-            </div>
-            <button className="flex items-center justify-center col-span-1 p-4 text-sm font-semibold text-center text-white md:text-base hover:bg-white hover:text-black md:col-start-4 border-x border-zinc-700">
-                CONNECT WALLET
-            </button>
-        </nav>
+        <>
+            <Navbar shouldHideOnScroll maxWidth="full" className="md:px-8 border-b md:grid-cols-4" classNames={{ wrapper: "px-4" }}>
+                <NavbarBrand className="flex items-center">
+                    <Link href="https://www.ocvlabs.com" className="text-base flex font-semibold">
+                        <Image src="/ocv.svg" alt="OCV Labs Logo" width={60} height={20} />
+                    </Link>
+                    <svg className="h-6 text-[#000]/20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.109 14 9.466 1h1.352L5.46 14H4.109Z" fill="currentColor" />
+                    </svg>
+
+                    <Link href="/" className="text-lg flex font-semibold text-black">
+                        <h2>Games</h2>
+                    </Link>
+                </NavbarBrand>
+                {/* <NavbarContent className="hidden gap-4 sm:flex" justify="center">
+                    <NavbarItem>
+                        <Link color="foreground" href="#">
+                            Features
+                        </Link>
+                    </NavbarItem>
+                    <NavbarItem isActive>
+                        <Link href="#" aria-current="page">
+                            Customers
+                        </Link>
+                    </NavbarItem>
+                    <NavbarItem>
+                        <Link color="foreground" href="#">
+                            Integrations
+                        </Link>
+                    </NavbarItem>
+                </NavbarContent> */}
+                <NavbarContent justify="end">
+                    {/* <NavbarItem className="hidden lg:flex">
+                        <Link href="#">Login</Link>
+                    </NavbarItem> */}
+                    <NavbarItem>
+                        <Button isDisabled={accountAddress} isLoading={connecting} size="sm" variant="ghost" color={accountAddress ? "primary" : "default"} onClick={connect}>
+                            {accountAddress ? "Connected" : "Connect Wallet"}
+                        </Button>
+                    </NavbarItem>
+                </NavbarContent>
+            </Navbar>
+        </>
+
     )
 }
 
