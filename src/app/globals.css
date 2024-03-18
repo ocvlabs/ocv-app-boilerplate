@@ -2,21 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --blue: #005b96;
-  --dark-blue: #011f4b;
-  --light-blue: #b3cde0;
-  --beige: #fffaf6;
-  --black: #15110e;
-}
-
 body {
   color: var(--black);
   background: var(--beige);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: var(--font-poppins);
+  /* font-family: var(--font-poppins); */
+  font-family: var(--font-ibm-plex-sans);
 }
 
 p {
